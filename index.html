@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alibek Mombekov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-hover: #f7f7f5;
+    --bg-tag: #f1f1ef;
+    --border: #e9e9e7;
+    --text: #1a1a1a;
+    --text-2: #6b6b6b;
+    --text-3: #9b9b9b;
+    --accent: #2563eb;
+    --font: 'Inter', -apple-system, sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg: #191919;
+    --bg-hover: #222222;
+    --bg-tag: #2a2a2a;
+    --border: #2f2f2f;
+    --text: #e8e8e6;
+    --text-2: #999996;
+    --text-3: #5a5a57;
+    --accent: #5b8ef0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.2s, color 0.2s;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 40px 120px;
+  }
+  @media (max-width: 600px) {
+    .page { padding: 32px 20px 80px; }
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 64px;
+  }
+  .theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 13px;
+    color: var(--text-2);
+    font-family: var(--font);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .theme-btn:hover { background: var(--bg-hover); color: var(--text); }
+  .theme-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  .avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--bg-tag);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    user-select: none;
+  }
+  h1 {
+    font-size: 36px; font-weight: 600;
+    letter-spacing: -0.8px; line-height: 1.15;
+    margin-bottom: 10px; color: var(--text);
+  }
+  .subtitle { font-size: 16px; color: var(--text-2); margin-bottom: 20px; font-weight: 400; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--bg-tag); border-radius: 5px;
+    padding: 4px 9px; font-size: 13px; color: var(--text-2);
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+    border: 1px solid transparent;
+  }
+  .chip:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border); }
+  .chip svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+  .contact-line { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+  .contact-link { font-size: 14px; color: var(--accent); text-decoration: none; }
+  .contact-link:hover { text-decoration: underline; }
+  .sep { color: var(--text-3); font-size: 14px; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  .section { margin-bottom: 48px; }
+  .section-title {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 20px;
+  }
+
+  .exp-row {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 16px 24px; padding: 14px 10px;
+    border-radius: 8px; transition: background 0.12s;
+    margin: 0 -10px;
+  }
+  .exp-row:hover { background: var(--bg-hover); }
+  @media (max-width: 520px) { .exp-row { grid-template-columns: 1fr; gap: 4px; } }
+  .exp-company { font-size: 14px; font-weight: 500; color: var(--text); }
+  .exp-date { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .exp-location { font-size: 12px; color: var(--text-3); }
+  .exp-role { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .exp-bullets { list-style: none; padding: 0; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--text-2); line-height: 1.65;
+    padding-left: 14px; position: relative; margin-bottom: 3px;
+  }
+  .exp-bullets li::before { content: '·'; position: absolute; left: 2px; color: var(--text-3); }
+  .exp-bullets b { color: var(--text); font-weight: 500; }
+
+  .skill-group { margin-bottom: 16px; }
+  .skill-group-label { font-size: 13px; color: var(--text-2); margin-bottom: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--bg-tag); border-radius: 4px;
+    padding: 3px 8px; font-size: 13px; color: var(--text-2);
+    border: 1px solid var(--border); transition: background 0.12s, color 0.12s;
+  }
+  .tag:hover { background: var(--bg-hover); color: var(--text); }
+
+  .project-row {
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 16px;
+    padding: 12px 10px; border-radius: 8px;
+    transition: background 0.12s; margin: 0 -10px;
+    text-decoration: none; color: inherit;
+  }
+  .project-row:hover { background: var(--bg-hover); }
+  .project-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .project-desc { font-size: 13px; color: var(--text-2); margin-top: 2px; max-width: 480px; }
+  .project-arrow { font-size: 13px; color: var(--text-3); flex-shrink: 0; }
+
+  .edu-row {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 4px 24px; padding: 12px 10px;
+    border-radius: 8px; transition: background 0.12s; margin: 0 -10px;
+  }
+  .edu-row:hover { background: var(--bg-hover); }
+  @media (max-width: 520px) { .edu-row { grid-template-columns: 1fr; gap: 2px; } }
+  .edu-date { font-size: 13px; color: var(--text-3); padding-top: 1px; }
+  .edu-degree { font-size: 14px; font-weight: 500; color: var(--text); }
+  .edu-school { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+
+  .cert-list { list-style: none; }
+  .cert-list li {
+    font-size: 14px; color: var(--text-2);
+    padding: 6px 10px; border-radius: 6px;
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 -10px; transition: background 0.12s;
+  }
+  .cert-list li:hover { background: var(--bg-hover); color: var(--text); }
+  .cert-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; margin-left: 2px; }
+
+  .footer {
+    padding-top: 40px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .footer-left { font-size: 13px; color: var(--text-3); }
+  .footer-links { display: flex; gap: 16px; }
+  .footer-links a { font-size: 13px; color: var(--text-2); text-decoration: none; }
+  .footer-links a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" id="theme-btn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <span id="theme-label">Dark</span>
+    </button>
+  </div>
+
+  <div class="avatar">AM</div>
+  <h1>Alibek Mombekov</h1>
+  <p class="subtitle">Data Engineer · Almaty, Kazakhstan</p>
+
+  <div class="meta-row">
+    <span class="chip">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Almaty, KZ
+    </span>
+    <!-- <span class="chip">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L6 7h12z"/></svg>
+      Open to work
+    </span> -->
+    <span class="chip">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      May 2025 – Present @ Kaspi.kz
+    </span>
+  </div>
+
+  <div class="contact-line">
+    <a href="mailto:mombekovalibek22@gmail.com" class="contact-link">mombekovalibek22@gmail.com</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/olimeme" class="contact-link" target="_blank">github.com/olimeme</a>
+    <!-- <span class="sep">·</span> -->
+    <!-- <a href="tel:+77001007185" class="contact-link">+7 700 100 71 85</a> -->
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <p class="section-title">Experience</p>
+
+    <div class="exp-row">
+      <div>
+        <div class="exp-company">Kaspi.kz</div>
+        <div class="exp-date">May 2025 – Present</div>
+        <div class="exp-location">Almaty, KZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Data Engineer</div>
+        <ul class="exp-bullets">
+          <li>Reduced ingestion delays by <b>20%</b> building real-time ETL pipelines with Kafka &amp; Python, processing <b>100M+ records daily</b> with PostgreSQL enrichment.</li>
+          <li>Improved query response times by <b>30%</b> with Go data services integrating Redis and Elasticsearch.</li>
+          <li>Migrated <b>200+ OracleDB tables</b> to PostgreSQL — 25% query performance gain.</li>
+          <li>Cut on-call incidents from <b>200+ to 30/month</b> by monitoring Kafka topic lag with Prometheus.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div>
+        <div class="exp-company">Zimalab</div>
+        <div class="exp-date">Sep 2024 – May 2025</div>
+        <div class="exp-location">Astana, KZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Frontend Engineer</div>
+        <ul class="exp-bullets">
+          <li>Built reusable component library, cutting feature delivery time by <b>25%</b>.</li>
+          <li>Shipped scalable solutions in Agile sprints across cross-functional teams.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div>
+        <div class="exp-company">Astana IT University</div>
+        <div class="exp-date">Jul 2022 – Jul 2023</div>
+        <div class="exp-location">Astana, KZ</div>
+      </div>
+      <div>
+        <div class="exp-role">Software Engineer</div>
+        <ul class="exp-bullets">
+          <li>Built and maintained a full-stack academic platform (React + Java) used by <b>4,000+ monthly users</b>.</li>
+          <li>Implemented LDAP-based SSO reducing login support requests by <b>30%+</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <p class="section-title">Education</p>
+
+    <div class="edu-row">
+      <div class="edu-date">Sep 2023 – Sep 2024</div>
+      <div>
+        <div class="edu-degree">M.Sc. Computing — Secure Software Engineering</div>
+        <div class="edu-school">Dublin City University · Dublin, Ireland</div>
+      </div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-date">Sep 2020 – Jul 2023</div>
+      <div>
+        <div class="edu-degree">B.Sc. ICT — Diploma with Honours</div>
+        <div class="edu-school">Astana IT University · Astana, Kazakhstan</div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <p class="section-title">Skills</p>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Languages</div>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Go</span><span class="tag">JavaScript</span><span class="tag">Java</span><span class="tag">C++</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Data &amp; Streaming</div>
+      <div class="tags">
+        <span class="tag">Apache Kafka</span><span class="tag">Apache Spark</span><span class="tag">Airflow</span><span class="tag">Google BigQuery</span><span class="tag">Starrocks</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Databases</div>
+      <div class="tags">
+        <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Elasticsearch</span><span class="tag">OracleDB</span><span class="tag">MongoDB</span><span class="tag">MySQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Observability</div>
+      <div class="tags">
+        <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Frontend &amp; Backend</div>
+      <div class="tags">
+        <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Spring Boot</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Infrastructure</div>
+      <div class="tags">
+        <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Git</span><span class="tag">OpenMP</span><span class="tag">OpenCL</span>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <p class="section-title">Projects</p>
+
+    <a class="project-row" href="https://github.com/olimeme/maitools/" target="_blank">
+      <div>
+        <div class="project-name">Maitools</div>
+        <div class="project-desc">Academic productivity suite — Pomodoro Timer, Kanban Board, collaborative Whiteboard in one place.</div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a class="project-row" href="https://github.com/olimeme/snip" target="_blank">
+      <div>
+        <div class="project-name">Snip</div>
+        <div class="project-desc">Code snippet storage built following Alex Edwards' "Let's Go!" — clean, fast, no-nonsense.</div>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+  </div>
+
+  <hr />
+
+  <div class="section">
+    <p class="section-title">Certificates &amp; Achievements</p>
+    <ul class="cert-list">
+      <li>IELTS 7.5 — British Council</li>
+      <li>Networking Essentials — Cisco Networking Academy</li>
+      <li>IT Essentials — Cisco Networking Academy</li>
+      <li>NDG Linux Essentials — Cisco Networking Academy</li>
+      <li>Google UX Design — Google</li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <div class="footer">
+    <span class="footer-left">Alibek Mombekov · 2025</span>
+    <div class="footer-links">
+      <a href="mailto:mombekovalibek22@gmail.com">Email</a>
+      <a href="https://github.com/olimeme" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const root = document.documentElement;
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  root.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  document.getElementById('theme-label').textContent = isDark ? 'Dark' : 'Light';
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const root = document.documentElement;
+  
+  if (savedTheme) {
+    root.setAttribute('data-theme', savedTheme);
+    document.getElementById('theme-label').textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initTheme);
+</script>
+</body>
+</html>
