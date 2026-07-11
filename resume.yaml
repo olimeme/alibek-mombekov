@@ -84,7 +84,10 @@ projects:
     desc: "Jira-style board for practicing LeetCode problems on a spaced-repetition schedule, auto-fetching problem metadata via a Vercel serverless proxy to LeetCode's GraphQL API."
   - name: "Maitools"
     url: "https://github.com/olimeme/maitools/"
-    desc: "Academic productivity suite — Pomodoro Timer, Kanban Board, and collaborative Whiteboard in one place."
+    desc: "Academic productivity suite - Pomodoro Timer, Kanban Board, and collaborative Whiteboard in one place."
+  - name: "Resume and Website updater"
+    url: "https://github.com/olimeme/alibek-mombekov"
+    desc: "This website/resume was generated using this project. Update .yaml file which updates your portfolio website and resume."
 
 certificates:
   - name: "IELTS 7.5"

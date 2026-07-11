@@ -27,12 +27,29 @@ resume.yaml
 | `npm run validate` | Check `resume.yaml` for missing fields / unbalanced `**` |
 | `npm run build`    | Validate, then write `dist/index.html` |
 | `npm run linkedin` | Print + write `dist/linkedin.txt` (paste sheet) |
-| `npm run all`      | Build the site and the LinkedIn sheet |
+| `npm run pdf`      | Compile `resume/resume.pdf` (needs Typst — see below) |
+| `npm run all`      | Build the site + LinkedIn sheet + PDF |
 
 Preview the site locally: `npm run build && (cd dist && python3 -m http.server 8000)` → http://localhost:8000
 
-Compile the PDF locally (needs [Typst](https://github.com/typst/typst)):
-`typst compile --root . resume/resume.typ resume/resume.pdf`
+### Build the PDF locally
+
+Node covers the site and LinkedIn; the PDF also needs [Typst](https://github.com/typst/typst).
+
+1. Install Typst once (macOS):
+   ```bash
+   brew install typst
+   ```
+2. Compile:
+   ```bash
+   npm run pdf
+   # equivalent to:  typst compile --root . resume/resume.typ resume/resume.pdf
+   ```
+   Output lands at `resume/resume.pdf`.
+
+The `--root .` flag matters — without it Typst sandboxes to `resume/` and can't read
+`resume.yaml` at the repo root. Installing Typst locally is only needed to preview
+before pushing; on push the GitHub Action builds the PDF for you.
 
 ## Writing bullets
 

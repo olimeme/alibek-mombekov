@@ -7,7 +7,8 @@
     "validate": "node scripts/validate.mjs",
     "build": "npm run validate && node scripts/build-site.mjs",
     "linkedin": "node scripts/linkedin.mjs",
-    "all": "npm run build && npm run linkedin"
+    "pdf": "typst compile --root . resume/resume.typ resume/resume.pdf",
+    "all": "npm run build && npm run linkedin && npm run pdf"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
