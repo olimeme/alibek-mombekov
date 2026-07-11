@@ -1,0 +1,95 @@
+# ─────────────────────────────────────────────────────────────────────────
+#  SINGLE SOURCE OF TRUTH
+#  Edit ONLY this file. Then run `npm run build` (or push — CI does it).
+#  It feeds:  the portfolio site (index.html),  the typst PDF,  LinkedIn blocks.
+#  Emphasis in bullets:  wrap text in **double asterisks** for bold.
+# ─────────────────────────────────────────────────────────────────────────
+
+profile:
+  name: "Alibek Mombekov"
+  headline: "Data Engineer"          # brand line: site hero + LinkedIn headline
+  location: "Almaty, Kazakhstan"
+  location_short: "Almaty, KZ"
+  open_to_work: false                # flip to true to show the "Open to work" chip
+  email: "mombekovalibek22@gmail.com"
+  phone: "+7-700-100-71-85"          # shown on the PDF only, not the website
+  github: "olimeme"                  # handle → github.com/olimeme
+  telegram: "olimeme"                # handle → t.me/olimeme
+  linkedin: "alibek-mombekov-247a81201"
+  website: "alibek-mombekov.vercel.app"
+  accent_color: "#26428b"            # used by the typst PDF
+
+experience:
+  - company: "Kaspi.kz"
+    role: "Software Engineer, Data"
+    location: "Almaty, Kazakhstan"
+    start: "May 2025"
+    end: "Present"
+    bullets:
+      - "**Reduced ingestion delays by 20%** by building and optimizing real-time ETL pipelines with Kafka and Python, enriching events with PostgreSQL lookups and processing 100M+ records daily."
+      - "**Improved query response times by 30%** by designing data services in Go integrating Redis and Elasticsearch to support scalable customer-facing applications."
+      - "**Migrated business-critical processes from OracleDB to PostgreSQL** (200+ tables), validating schema design and data accuracy for a 25% query-performance gain."
+      - "**Cut on-call technician calls from 200+ to 30 per month** by analyzing Kafka topic lag with Python and Prometheus."
+
+  - company: "Zimalab"
+    role: "Frontend Engineer"
+    location: "Astana, Kazakhstan"
+    start: "Sep 2024"
+    end: "May 2025"
+    bullets:
+      - "**Built reusable components and optimized application performance**, reducing feature delivery time by 25%."
+      - "**Collaborated with cross-functional teams in an Agile environment** to deliver high-quality, scalable solutions within sprint deadlines."
+
+  - company: "Astana IT University, IT Department"
+    role: "Software Engineer"
+    location: "Astana, Kazakhstan"
+    start: "Jul 2022"
+    end: "Jul 2023"
+    bullets:
+      - "**Designed and maintained a full-stack academic platform** (React + Java) used by 4,000+ monthly users, integrating scalable backend services and improving system usability and reliability."
+      - "**Implemented secure LDAP-based SSO for university staff and students** using OpenLDAP and Spring Security, streamlining access management and reducing login-related support requests by 30%+."
+
+education:
+  - institution: "Dublin City University"
+    location: "Dublin, Ireland"
+    degree: "M.Sc. Computing — Secure Software Engineering"
+    start: "Sep 2023"
+    end: "Sep 2024"
+    gpa: ""
+
+  - institution: "Astana IT University"
+    location: "Astana, Kazakhstan"
+    degree: "B.Sc. in Information and Communication Technologies (Diploma with Honours)"
+    start: "Sep 2020"
+    end: "Jul 2023"
+    gpa: ""
+
+skills:
+  - category: "Languages"
+    items: ["Python", "Go", "JavaScript", "Java", "C++"]
+  - category: "Data & Streaming"
+    items: ["Apache Kafka", "Apache Spark", "Airflow", "Google BigQuery", "Starrocks"]
+  - category: "Databases"
+    items: ["PostgreSQL", "Redis", "Elasticsearch", "OracleDB", "MongoDB", "MySQL"]
+  - category: "Observability"
+    items: ["Prometheus", "Grafana"]
+  - category: "Frontend & Backend"
+    items: ["Next.js", "React", "Spring Boot"]
+  - category: "Infrastructure"
+    items: ["AWS", "Docker", "Kubernetes", "Git", "OpenMP", "OpenCL"]
+
+projects:
+  - name: "LeetCode Spaced Repetition"
+    url: "https://github.com/olimeme/leetcode-spaced-repetition"
+    desc: "Jira-style board for practicing LeetCode problems on a spaced-repetition schedule, auto-fetching problem metadata via a Vercel serverless proxy to LeetCode's GraphQL API."
+  - name: "Maitools"
+    url: "https://github.com/olimeme/maitools/"
+    desc: "Academic productivity suite — Pomodoro Timer, Kanban Board, and collaborative Whiteboard in one place."
+
+certificates:
+  - name: "IELTS 7.5"
+    issuer: "British Council"
+  - name: "Networking Essentials"
+    issuer: "Cisco Networking Academy"
+  - name: "Google UX Design"
+    issuer: "Google"

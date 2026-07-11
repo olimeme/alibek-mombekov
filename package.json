@@ -1,0 +1,15 @@
+{
+  "name": "alibek-mombekov-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio site + resume, generated from a single resume.yaml",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "npm run validate && node scripts/build-site.mjs",
+    "linkedin": "node scripts/linkedin.mjs",
+    "all": "npm run build && npm run linkedin"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

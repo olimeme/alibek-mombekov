@@ -1,0 +1,38 @@
+name: Build resume PDF
+
+# Recompiles resume/resume.pdf from resume.yaml whenever the content changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "resume.yaml"
+      - "resume/resume.typ"
+      - ".github/workflows/build-pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile PDF
+        run: typst compile --root . resume/resume.typ resume/resume.pdf
+
+      - name: Commit updated PDF
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- resume/resume.pdf; then
+            git add resume/resume.pdf
+            git commit -m "chore: rebuild resume.pdf [skip ci]"
+            git push
+          else
+            echo "PDF unchanged."
+          fi
