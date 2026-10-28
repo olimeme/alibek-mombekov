@@ -98,10 +98,20 @@
   }
   .chip:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border); }
   .chip svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
-  .contact-line { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+  .contact-line { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .contact-link { font-size: 14px; color: var(--accent); text-decoration: none; }
   .contact-link:hover { text-decoration: underline; }
   .sep { color: var(--text-3); font-size: 14px; }
+
+  .resume-dl {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--bg-tag); border: 1px solid var(--border);
+    border-radius: 6px; padding: 7px 13px; font-size: 13px; font-weight: 500;
+    color: var(--text); text-decoration: none; margin-bottom: 48px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .resume-dl:hover { background: var(--bg-hover); border-color: var(--text-3); }
+  .resume-dl svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
 
   hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 

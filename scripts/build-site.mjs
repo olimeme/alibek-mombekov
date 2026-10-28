@@ -1,5 +1,5 @@
 // Generate dist/index.html from resume.yaml + templates/site.html.
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 import {
   ROOT,
@@ -20,6 +20,9 @@ const ICON_PIN = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1
 const ICON_CLOCK = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 const ICON_SUN = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
 const ICON_BRIEFCASE = `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L6 7h12z"/></svg>`;
+const ICON_DOWNLOAD = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+
+const resumeFilename = `${p.name.replace(/\s+/g, "-")}-Resume.pdf`;
 
 const openToWorkChip = p.open_to_work
   ? `
@@ -60,7 +63,12 @@ const header = `
     <a href="${L.githubUrl}" class="contact-link" target="_blank">${htmlEscape(L.githubLabel)}</a>
     <span class="sep">·</span>
     <a href="${L.telegramUrl}" class="contact-link" target="_blank">tg: ${htmlEscape(L.telegramLabel)}</a>
-  </div>`;
+  </div>
+
+  <a class="resume-dl" href="resume.pdf" download="${resumeFilename}">
+    ${ICON_DOWNLOAD}
+    Download résumé
+  </a>`;
 
 const experience = `
   <div class="section">
@@ -178,3 +186,12 @@ const html = template
 mkdirSync(join(ROOT, "dist"), { recursive: true });
 writeFileSync(join(ROOT, "dist", "index.html"), html);
 console.log("✓ dist/index.html written");
+
+// Make the compiled PDF downloadable from the site.
+const pdfSrc = join(ROOT, "resume", "resume.pdf");
+if (existsSync(pdfSrc)) {
+  copyFileSync(pdfSrc, join(ROOT, "dist", "resume.pdf"));
+  console.log("✓ dist/resume.pdf copied");
+} else {
+  console.warn("! resume/resume.pdf not found — run `npm run pdf` so the download button works");
+}

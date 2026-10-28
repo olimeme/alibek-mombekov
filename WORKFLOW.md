@@ -20,6 +20,14 @@ resume.yaml
 4. For **LinkedIn** (no API — manual), run `npm run linkedin`, then paste each
    block into the matching field on your profile. See the printed checklist.
 
+> **The "Download résumé" button** on the site serves `dist/resume.pdf`, which the
+> build copies from the committed `resume/resume.pdf`. So the download is only as
+> fresh as the last compiled PDF. Before pushing a content change, run `npm run all`
+> (site + LinkedIn + PDF) so the committed PDF matches `resume.yaml`. If you push
+> without it, Vercel deploys with the old PDF first; the GitHub Action then
+> recompiles, commits the new PDF, and that commit redeploys with the fresh
+> download — a brief, self-healing lag.
+
 ## Commands
 
 | Command | What it does |
