@@ -26,8 +26,8 @@ experience:
     start: "May 2025"
     end: "Present"
     bullets:
-      - "**Reduced ingestion delays by 20%** by building and optimizing real-time ETL pipelines with Kafka and Python, enriching events with PostgreSQL lookups and processing 100M+ records daily."
-      - "**Improved query response times by 30%** by designing data services in Go integrating Redis and Elasticsearch to support scalable customer-facing applications."
+      - "Owned transaction data delivery for credit risk, fraud, marketplace, finance and product teams."
+      - "Built Kafka and Python ETL using Debezium CDC and PostgreSQL enrichment, processing 100M+ records daily. Data quality checks caught errors before delivery, while **ingestion delays fell 20%** and transactions reached applications in <1 second."
       - "**Migrated business-critical processes from OracleDB to PostgreSQL** (200+ tables), validating schema design and data accuracy for a 25% query-performance gain."
       - "**Cut on-call technician calls from 200+ to 30 per month** by analyzing Kafka topic lag with Python and Prometheus."
 
@@ -37,8 +37,7 @@ experience:
     start: "Sep 2024"
     end: "May 2025"
     bullets:
-      - "**Built reusable components and optimized application performance**, reducing feature delivery time by 25%."
-      - "**Collaborated with cross-functional teams in an Agile environment** to deliver high-quality, scalable solutions within sprint deadlines."
+      - "Built reusable frontend components for DesignBundles, a merch design product, and engraving machine software, reducing feature delivery time by 25%"
 
   - company: "Astana IT University, IT Department"
     role: "Software Engineer"
