@@ -27,7 +27,7 @@ experience:
     end: "Present"
     bullets:
       - "Owned transaction data delivery for credit risk, fraud, marketplace, finance and product teams."
-      - "Built Kafka and Python ETL using Debezium CDC and PostgreSQL enrichment, processing 100M+ records daily. Data quality checks caught errors before delivery, while **ingestion delays fell 20%** and transactions reached applications in <1 second."
+      - "Built Kafka + Python ETL with Debezium CDC and PostgreSQL enrichment, processing **100M+ records daily**; quality checks caught errors pre-delivery and **cut ingestion delays 20%**, with sub-second delivery to applications."
       - "**Migrated business-critical processes from OracleDB to PostgreSQL** (200+ tables), validating schema design and data accuracy for a 25% query-performance gain."
       - "**Cut on-call technician calls from 200+ to 30 per month** by analyzing Kafka topic lag with Python and Prometheus."
 
@@ -84,9 +84,12 @@ projects:
   - name: "Maitools"
     url: "https://github.com/olimeme/maitools/"
     desc: "Academic productivity suite - Pomodoro Timer, Kanban Board, and collaborative Whiteboard in one place."
+  - name: "SpaceMemory"
+    url: "https://github.com/olimeme/SpaceMemory"
+    desc: "macOS window/space manager rethinking desktop UX, inspired by Scott Jenson's talk on desktop interfaces."
   - name: "Resume and Website updater"
     url: "https://github.com/olimeme/alibek-mombekov"
-    desc: "This website/resume was generated using this project. Update .yaml file which updates your portfolio website and resume."
+    desc: "Single-source pipeline that generated this résumé PDF and portfolio site — edit one YAML file and both regenerate."
 
 certificates:
   - name: "IELTS 7.5"
